@@ -1,0 +1,8 @@
+node_modules/
+venv/
+out.txt
+test_results.txt
+cypress_run_final.txt
+.vscode/
+cypress/screenshots/
+cypress/videos/

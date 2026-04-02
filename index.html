@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Tienda Pro</title></head>
+<body>
+  <header><h1>Tienda de Yohon</h1></header>
+  <input type="text" id="nombre-cliente" placeholder="Tu nombre...">
+  <button id="boton-comprar">Comprar Ahora</button>
+  <p id="mensaje-exito" style="display:none">¡Gracias por tu compra, <span id="cliente-span"></span>! 🚀</p>
+  <script>
+    document.getElementById('boton-comprar').onclick = function() {
+      const nombre = document.getElementById('nombre-cliente').value;
+      document.getElementById('cliente-span').innerText = nombre;
+      document.getElementById('mensaje-exito').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

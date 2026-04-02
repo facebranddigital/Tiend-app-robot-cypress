@@ -1,15 +1,33 @@
 {
+<<<<<<< HEAD
   "name": "e2e",
   "version": "1.0.0",
   "description": "",
   "main": "tienda.cy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+  "name": "tiend-app-robot-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+>>>>>>> Initial commit: Fixed Cypress tests for live Tienda App
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+<<<<<<< HEAD
     "cypress": "^15.13.0"
+=======
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "cypress": "^15.13.0",
+    "esbuild": "^0.27.4"
+>>>>>>> Initial commit: Fixed Cypress tests for live Tienda App
   }
 }
