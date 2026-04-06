@@ -1,0 +1,19 @@
+describe('Prueba de Transición de Estados: Flujo del Carrito', () => {
+  it('Debe transitar de Catálogo a Carrito al seleccionar un producto', () => {
+
+    cy.visit('nano cypress/e2e/flujo_carrito_estados.cy.js);
+
+    // Asegura que el botón existe y haz click
+    cy.contains('Agregar al carrito')
+      .should('be.visible')
+      .click({ force: true });
+
+    // Validación robusta (con retry automático)
+    cy.url().should((url) => {
+      expect(
+        url.includes('/carrito') || url.includes('/checkout')
+      ).to.be.true;
+    });
+
+  });
+});
