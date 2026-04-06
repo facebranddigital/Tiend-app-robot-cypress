@@ -1,6 +1,6 @@
-k{
+{
   "version": 2,
-  "routes": [
-    { "src": "/api/auth", "dest": "/api/auth.js", "methods": ["POST"] }
-  ]
+  "functions": {
+    "api/*.js": { "runtime": "vercel-node@latest" }
+  }
 }
