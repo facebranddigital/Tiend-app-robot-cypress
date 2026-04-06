@@ -1,33 +1,23 @@
 {
   "name": "tiend-app-robot-cypress",
-  "version": "1.0.0",
-  "description": "Proyecto de QA Automation para Tienda App con integración a Salesforce",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "cypress run",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run --browser chrome",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+  "version": "1.1.0",
+  "description": "Automatización y Backend Serverless para integración con Salesforce",
+  "main": "api/auth.js",
+  "engines": {
+    "node": "22.x"
   },
-  "keywords": [
-    "cypress",
-    "qa",
-    "automation",
-    "salesforce",
-    "testing"
-  ],
-  "author": "Ever",
-  "license": "ISC",
+  "scripts": {
+    "start": "node api/auth.js",
+    "test": "cypress open",
+    "build": "echo 'No build step needed for pure API'"
+  },
   "dependencies": {
-    "jsforce": "^3.10.14",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "jsforce": "^1.11.0",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "cypress": "^13.0.0"
-  }
+  },
+  "author": "Ever",
+  "license": "ISC"
 }
