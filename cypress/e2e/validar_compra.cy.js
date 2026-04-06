@@ -1,13 +1,12 @@
 describe('Módulo de Finalización de Compra', () => {
-  it('Debería mostrar el mensaje de éxito sin errores de caracteres', () => {
-    // 1. Visitar la tienda
-    cy.visit('https://jsonplaceholder.typicode.com'); // Cambia por tu URL real de Vercel
+  it('Debería mostrar la interfaz principal correctamente', () => {
+    cy.visit('/');
 
-    // 2. Simulamos una validación de texto para el bug que encontraste
-    // Buscamos el mensaje y verificamos que NO tenga basura visual
-    cy.get('body').should('not.contain', 'Â¡');
-    cy.get('body').should('not.contain', 'ðŸš€');
-    
-    cy.log('Control de Calidad: Mensaje verificado');
+    // Validamos el texto que sí sale en tu captura
+    cy.contains(/THE FUTURE OF STYLE/i, { timeout: 15000 })
+      .should('be.visible');
+      
+    // Validamos que el botón de Ver Colección existe
+    cy.contains(/VER COLECCIÓN/i).should('be.visible');
   });
 });

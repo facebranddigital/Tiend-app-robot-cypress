@@ -22,7 +22,7 @@
   "author": "Ever",
   "license": "ISC",
   "dependencies": {
-    "jsforce": "^2.0.0",
+    "jsforce": "^3.10.14",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
