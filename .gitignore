@@ -6,3 +6,5 @@ cypress_run_final.txt
 .vscode/
 cypress/screenshots/
 cypress/videos/
+.vercel
+.env*.local

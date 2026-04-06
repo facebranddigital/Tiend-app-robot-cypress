@@ -12,8 +12,9 @@
     "build": "echo 'No build step needed for pure API'"
   },
   "dependencies": {
-    "jsforce": "^1.11.0",
-    "dotenv": "^16.4.5"
+    "@hubspot/api-client": "^13.5.0",
+    "dotenv": "^16.4.5",
+    "resend": "^6.10.0"
   },
   "devDependencies": {
     "cypress": "^13.0.0"

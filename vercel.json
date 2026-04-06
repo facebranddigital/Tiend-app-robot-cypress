@@ -1,12 +1,5 @@
-k{
+{
   "version": 2,
-  "public": false,
-  "rewrites": [
-    { "source": "/api/auth", "destination": "/api/auth.js" }
-  ],
-  "functions": {
-    "api/*.js": {
-      "runtime": "vercel-node@latest"
-    }
-  }
+  "framework": null,
+  "installCommand": "npm install"
 }
