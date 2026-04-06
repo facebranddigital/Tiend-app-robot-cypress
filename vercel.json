@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "api/*.js", "use": "@vercel/node" },
-    { "src": "package.json", "use": "@vercel/static" },
-    { "src": "public/**", "use": "@vercel/static" }
-  ],
+  "functions": {
+    "api/*.js": {
+      "runtime": "vercel-node@latest"
+    }
+  },
   "routes": [
-    { "src": "/api/register", "dest": "/api/register.js", "methods": ["POST"] }
+    {
+      "src": "/api/register",
+      "dest": "/api/register.js",
+      "methods": ["POST", "OPTIONS"]
+    }
   ]
 }
