@@ -1,15 +1,14 @@
 {
   "version": 2,
+  "rewrites": [
+    {
+      "source": "/api/register",
+      "destination": "/api/register.js"
+    }
+  ],
   "functions": {
-    "api/*.js": {
+    "api/register.js": {
       "runtime": "vercel-node@latest"
     }
-  },
-  "routes": [
-    {
-      "src": "/api/register",
-      "dest": "/api/register.js",
-      "methods": ["POST", "OPTIONS"]
-    }
-  ]
+  }
 }
