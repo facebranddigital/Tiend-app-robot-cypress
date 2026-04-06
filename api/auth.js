@@ -41,3 +41,4 @@ export default async function handler(req, res) {
 // Update: Sun 05 Apr 2026 11:18:10 PM -05
 // Re-deploy con settings corregidos
 // Force update Mon 06 Apr 2026 01:04:09 AM -05
+// QA Ready: Mon 06 Apr 2026 01:39:36 AM -05
