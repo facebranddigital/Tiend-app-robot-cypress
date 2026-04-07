@@ -1,16 +1,22 @@
-import { resend } from '../lib/resend';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Método no permitido' });
+  }
+
   try {
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'tu-correo@ejemplo.com', // <--- CAMBIA ESTO POR TU CORREO REAL
-      subject: 'Hola desde Vercel',
-      html: '<strong>El robot de Cypress ha terminado.</strong>'
+      to: 'tu-correo@ejemplo.com', // <--- PON TU CORREO AQUÍ
+      subject: 'Reporte Robot Cypress',
+      html: '<strong>Envío exitoso desde la raíz de la API</strong>'
     });
 
-    res.status(200).json(data);
+    return res.status(200).json(data);
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(500).json({ error: error.message });
   }
 }
