@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   try {
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'tu-correo@ejemplo.com', // <--- PON TU CORREO AQUÍ
+      to: 'facebranddigital@gmail.com', // <--- PON TU CORREO AQUÍ
       subject: 'Reporte Robot Cypress',
       html: '<strong>Envío exitoso desde la raíz de la API</strong>'
     });
