@@ -5,7 +5,7 @@ describe("Prueba de Registro de Usuario - Tienda App", () => {
     // Intenta quitar el 'auth' si no funciona, a veces es solo /register
 
     // 1. Visitar la página (Asegúrate de cerrar bien los paréntesis)
-    cy.visit('https://tiend-app-wogt.vercel.app/register', { timeout: 30000 });
+    cy.visit("https://tiend-app-wogt.vercel.app/register", { timeout: 30000 });
 
     // 2. Esperar a que el elemento sea visible (esto evita el timeout de 4000ms)
 
@@ -17,7 +17,7 @@ describe("Prueba de Registro de Usuario - Tienda App", () => {
 
     cy.get("#email").type("eversozinho@gmail.com");
 
-    cy.get("#password").type("Admin123!"); 
+    cy.get("#password").type("Admin123!");
 
     cy.get("#confirmPassword").type("Admin123!");
 
@@ -25,8 +25,12 @@ describe("Prueba de Registro de Usuario - Tienda App", () => {
 
     cy.get("button.btn-submit").click();
 
-    // 4. Verificar que redirija al login
+    // 4. ESPERA ACTIVA: En lugar de solo mirar la URL, espera un elemento
+    // que solo aparezca cuando el login es exitoso en la base de datos.
+    cy.url({ timeout: 15000 }).should("include", "/products");
+    // 5. ESPERA CRÍTICA (Dale 5 segundos para que el backend respire)
+    cy.wait(5000);
 
-    cy.url().should('include', '/products');
+    // 5. Ahora sí verifica la URL
   });
 });
