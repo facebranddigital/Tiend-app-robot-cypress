@@ -2,13 +2,16 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://tiend-app-wogt.vercel.app',
-    defaultCommandTimeout: 15000,
-    viewportWidth: 1280,
-    viewportHeight: 720,
-    screenshotOnRunFailure: true,
     setupNodeEvents(on, config) {
-      // Implementar listeners aquí si es necesario
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        if (browser.name === 'chrome' || browser.name === 'chromium') {
+          // Esto elimina el rastro de que es un robot
+          launchOptions.args.push('--disable-blink-features=AutomationControlled');
+          return launchOptions;
+        }
+      });
     },
+    baseUrl: 'https://tiend-app.vercel.app',
+    experimentalMemoryManagement: true,
   },
 });

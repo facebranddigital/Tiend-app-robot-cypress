@@ -13,12 +13,14 @@
   },
   "dependencies": {
     "@hubspot/api-client": "^13.5.0",
+    "@sendgrid/mail": "^8.1.6",
     "axios": "^1.14.0",
     "dotenv": "^16.4.5",
     "resend": "^6.10.0"
   },
   "devDependencies": {
-    "cypress": "^13.0.0"
+    "cypress": "^15.13.1",
+    "cypress-iframe": "^1.0.1"
   },
   "author": "Ever",
   "license": "ISC"

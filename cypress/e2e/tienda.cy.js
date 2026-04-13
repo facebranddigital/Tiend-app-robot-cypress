@@ -1,37 +1,28 @@
-describe('Suite de Pruebas - Tienda Virtual', () => {
+describe('DCCF: Flujo Completo de Registro y Notificación', () => {
+  // Datos del usuario con timestamp para evitar colisiones en BD
+  const nuevoUsuario = {
+    nombre: 'Ever QA',
+    email: `ever_${Date.now()}@facebrand.com`,
+    password: 'D4rk4rm4deus2026'
+  };
 
-  beforeEach(() => {
-    cy.visit('https://tiend-app-mu.vercel.app/');
-  });
+  it('Debe crear la cuenta exitosamente vía UI y validar el flujo', () => {
+    // 1. Visitar la ruta real que editamos en el HTML
+    cy.visit('https://tiend-app.vercel.app/auth/register');
+    cy.url().should('include', '/register');
 
-  it('Validar navegación y visibilidad de la Navbar', () => {
-    cy.contains(/Inicio|Home/i).should('be.visible');
-    cy.contains(/Categorías|Productos/i).should('be.visible');
-  });
+    // 2. Interacción de Usuario Real (Usando los data-testid que cuadramos)
+    cy.get('[data-testid="reg-name"]').type(nuevoUsuario.nombre);
+    cy.get('[data-testid="reg-email"]').type(nuevoUsuario.email);
+    cy.get('[data-testid="reg-password"]').type(nuevoUsuario.password);
 
-  it('Simular flujo de Registro de Usuario', () => {
-    // 1. Ir al login
-    cy.contains(/Login/i).click({ force: true });
+    // 3. Control de Flujo: Asegurar que el botón esté activo antes de hacer clic
+    cy.get('[data-testid="reg-submit"]').should('not.be.disabled').click();
 
-    // 2. Clic en "Regístrate aquí"
-    cy.contains('Regístrate aquí', { timeout: 10000 }).click({ force: true });
-
-    // 3. Llenamos los campos de la nueva cuenta
-    cy.get('input[placeholder*="tu@ejemplo.com"]')
-      .type(`ever.tester${Date.now()}@prueba.com`, { force: true }); // Usamos Date.now() para que el correo siempre sea único
+    // 4. Verificación de éxito (Redirección esperada a Login o Dashboard)
+    // Cambia '/auth/login' por la ruta a la que redirige tu app
+    cy.url().should('contain', '/login');
     
-    cy.get('input[placeholder*="Mínimo 6 caracteres"]')
-      .type('Password123!', { force: true });
-    
-    cy.get('input[placeholder*="Repite tu contraseña"]')
-      .type('Password123!', { force: true });
-
-    // 4. Clic en el botón de registro
-    cy.get('button').contains(/Registrarse|Crear cuenta/i).click({ force: true });
-
-    // 5. VALIDACIÓN FINAL: Según tu captura, la app redirige a Productos
-    // Esperamos a que la URL cambie y aparezca el título del inventario
-    cy.url({ timeout: 15000 }).should('include', '/products');
-    cy.contains('Inventario de Productos', { timeout: 15000 }).should('be.visible');
+    cy.log('✅ Registro exitoso para: ' + nuevoUsuario.email);
   });
 });

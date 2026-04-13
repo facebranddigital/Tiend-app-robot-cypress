@@ -1,0 +1,17 @@
+describe('Misión: Login Automatizado Tienda', () => {
+  it('Debe loguearse y verificar el acceso a la tienda', () => {
+    cy.visit('https://tiend-app.vercel.app/login'); // Ajusta la ruta si es diferente
+
+    // 1. El robot escribe las credenciales
+    cy.get('input[name="email"]').type('teveventaspasto@gmail.com');  
+cy.get('input[name="password"]').type('D4rk4rm4deus2026');    
+    // 2. Click en el botón de entrar
+    cy.get('button[type="submit"]').click();
+
+    // 3. Verificación de éxito (Ajusta el elemento que aparece al entrar)
+    cy.url().should('include', '/dashboard'); 
+    cy.contains('Bienvenido').should('be.visible');
+
+    cy.log('🔐 Login completado y verificado');
+  });
+});
